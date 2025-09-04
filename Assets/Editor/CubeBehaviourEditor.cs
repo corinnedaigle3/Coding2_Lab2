@@ -18,10 +18,10 @@ public class CubeBehaviourEditor : Editor
         EditorGUILayout.PropertyField(size);
         serializedObject.ApplyModifiedProperties();
 
-        // applies new size to all cubes
-        foreach (var cube in GameObject.FindObjectsOfType<CubeBehaviour>())
+        // changes the size of all selected cubes
+        foreach (var tar in targets)
         {
-            cube.size = size.floatValue;
+            var cube = (CubeBehaviour)tar;
             cube.transform.localScale = new Vector3(cube.size, cube.size, cube.size);
         }
 

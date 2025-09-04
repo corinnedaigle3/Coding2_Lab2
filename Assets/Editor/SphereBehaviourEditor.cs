@@ -18,10 +18,10 @@ public class SphereBehaviourEditor : Editor
         EditorGUILayout.PropertyField(size);
         serializedObject.ApplyModifiedProperties();
 
-        // applies new size to all spheres
-        foreach (var sphere in GameObject.FindObjectsOfType<SphereBehaviour>())
+        // changes the size of all selected spheres
+        foreach (var tar in targets)
         {
-            sphere.size = size.floatValue;
+            var sphere = (SphereBehaviour)tar;
             sphere.transform.localScale = new Vector3(sphere.size, sphere.size, sphere.size);
         }
 
